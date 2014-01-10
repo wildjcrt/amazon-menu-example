@@ -87,9 +87,16 @@
 
   <script type="text/javascript" charset="utf-8">
     $(function() {
-      $("#menu").menuAim({
-        activate: $.noop,
-        deactivate: $.noop
+      $('#menu').menuAim({
+        activate: function(row) {
+          $('.sub-links').fadeOut();
+          $(row).find('.sub-links').fadeIn();
+        },
+        exitMenu: function() {
+          $('.sub-links').fadeOut();
+          return true;
+        },
+        submenuDirection: 'below'
       });
     });
   </script>
